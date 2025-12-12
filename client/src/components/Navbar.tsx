@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/_core/hooks/useAuth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface NavbarProps {
   lang: "en" | "es";
@@ -12,12 +19,15 @@ interface NavbarProps {
 export default function Navbar({ lang, toggleLang }: NavbarProps) {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const { user, isAuthenticated } = useAuth();
+  const isAdmin = user?.role === "admin";
 
   const navItems = {
     en: [
       { name: "Home", path: "/" },
       { name: "About", path: "/about" },
       { name: "Services", path: "/services" },
+      { name: "Courses", path: "/courses" },
       { name: "Testimonials", path: "/testimonials" },
       { name: "Contact", path: "/contact" },
     ],
@@ -25,6 +35,7 @@ export default function Navbar({ lang, toggleLang }: NavbarProps) {
       { name: "Inicio", path: "/" },
       { name: "Sobre Mí", path: "/about" },
       { name: "Servicios", path: "/services" },
+      { name: "Cursos", path: "/courses" },
       { name: "Testimonios", path: "/testimonials" },
       { name: "Contacto", path: "/contact" },
     ],
@@ -59,6 +70,33 @@ export default function Navbar({ lang, toggleLang }: NavbarProps) {
               </span>
             </Link>
           ))}
+          
+          {isAuthenticated && (
+            <Link href="/dashboard">
+              <span className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">
+                {lang === "en" ? "My Courses" : "Mis Cursos"}
+              </span>
+            </Link>
+          )}
+          
+          {isAdmin && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="gap-1">
+                  Admin <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                  <Link href="/admin">
+                    <span className="cursor-pointer w-full">
+                      {lang === "en" ? "Manage Courses" : "Gestionar Cursos"}
+                    </span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
           
           <Button 
             variant="ghost" 
