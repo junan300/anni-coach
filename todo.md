@@ -71,3 +71,21 @@
 
 ## LinkedIn URL Update
 - [x] Change LinkedIn URL to www.linkedin.com/in/anniaguilar
+
+## Calendly Integration Update
+- [ ] Update Calendly URL to calendly.com/anniaguilar
+
+## Simplify to GitHub Pages (Static Site)
+- [x] Remove database dependencies (drizzle, mysql2)
+- [x] Remove server-side code (Express, tRPC)
+- [x] Remove Stripe integration
+- [x] Remove authentication system
+- [x] Remove admin panel pages
+- [x] Remove course marketplace pages
+- [x] Remove "My Courses" from navbar
+- [x] Remove "Admin" dropdown from navbar
+- [x] Update package.json for static build only
+- [x] Add GitHub Pages deployment configuration
+- [x] Update build scripts for GitHub Pages
+- [x] Test static build locally
+- [ ] Commit and push to GitHub

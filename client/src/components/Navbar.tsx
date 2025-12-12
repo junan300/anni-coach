@@ -1,15 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useAuth } from "@/_core/hooks/useAuth";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 interface NavbarProps {
   lang: "en" | "es";
@@ -19,15 +12,12 @@ interface NavbarProps {
 export default function Navbar({ lang, toggleLang }: NavbarProps) {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const { user, isAuthenticated } = useAuth();
-  const isAdmin = user?.role === "admin";
 
   const navItems = {
     en: [
       { name: "Home", path: "/" },
       { name: "About", path: "/about" },
       { name: "Services", path: "/services" },
-      { name: "Courses", path: "/courses" },
       { name: "Testimonials", path: "/testimonials" },
       { name: "Contact", path: "/contact" },
     ],
@@ -35,7 +25,6 @@ export default function Navbar({ lang, toggleLang }: NavbarProps) {
       { name: "Inicio", path: "/" },
       { name: "Sobre Mí", path: "/about" },
       { name: "Servicios", path: "/services" },
-      { name: "Cursos", path: "/courses" },
       { name: "Testimonios", path: "/testimonials" },
       { name: "Contacto", path: "/contact" },
     ],
@@ -71,74 +60,48 @@ export default function Navbar({ lang, toggleLang }: NavbarProps) {
             </Link>
           ))}
           
-          {isAuthenticated && (
-            <Link href="/dashboard">
-              <span className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">
-                {lang === "en" ? "My Courses" : "Mis Cursos"}
-              </span>
-            </Link>
-          )}
-          
-          {isAdmin && (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="gap-1">
-                  Admin <ChevronDown className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem asChild>
-                  <Link href="/admin">
-                    <span className="cursor-pointer w-full">
-                      {lang === "en" ? "Manage Courses" : "Gestionar Cursos"}
-                    </span>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-          
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={toggleLang}
-            className="flex items-center gap-2 text-primary hover:text-primary/80 hover:bg-primary/10"
+            className="gap-2"
           >
             <Globe className="h-4 w-4" />
-            <span className="font-bold">{lang === "en" ? "ES" : "EN"}</span>
+            {lang === "en" ? "ES" : "EN"}
           </Button>
-
+          
           <Link href="/booking">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all">
-              {lang === "en" ? "Book Appointment" : "Reservar Cita"}
+            <Button size="lg" className="rounded-full px-8">
+              {lang === "en" ? "Book Now" : "Reservar Cita"}
             </Button>
           </Link>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center gap-4">
+        {/* Mobile Menu */}
+        <div className="md:hidden flex items-center gap-2">
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={toggleLang}
-            className="flex items-center gap-1 text-primary"
+            className="gap-2"
           >
-            <span className="font-bold">{lang === "en" ? "ES" : "EN"}</span>
+            <Globe className="h-4 w-4" />
+            {lang === "en" ? "ES" : "EN"}
           </Button>
-
+          
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <div className="flex flex-col gap-8 mt-8">
+            <SheetContent side="right" className="w-[300px]">
+              <div className="flex flex-col gap-6 mt-8">
                 {currentItems.map((item) => (
                   <Link key={item.path} href={item.path}>
                     <span 
                       onClick={() => setIsOpen(false)}
-                      className={`text-lg font-medium transition-colors hover:text-primary cursor-pointer ${
+                      className={`text-lg font-medium transition-colors hover:text-primary cursor-pointer block ${
                         location === item.path ? "text-primary font-bold" : "text-muted-foreground"
                       }`}
                     >
@@ -146,12 +109,14 @@ export default function Navbar({ lang, toggleLang }: NavbarProps) {
                     </span>
                   </Link>
                 ))}
+                
                 <Link href="/booking">
                   <Button 
-                    className="w-full bg-primary text-primary-foreground"
+                    size="lg" 
+                    className="w-full rounded-full"
                     onClick={() => setIsOpen(false)}
                   >
-                    {lang === "en" ? "Book Appointment" : "Reservar Cita"}
+                    {lang === "en" ? "Book Now" : "Reservar Cita"}
                   </Button>
                 </Link>
               </div>
