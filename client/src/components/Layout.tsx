@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps) {
   // Initialize language from localStorage or default to 'en'
   const [lang, setLang] = useState<"en" | "es">(() => {
     const saved = localStorage.getItem("lang");
-    return (saved === "en" || saved === "es") ? saved : "en";
+    return (saved === "en" || saved === "es") ? saved : "es";
   });
 
   const toggleLang = () => {
