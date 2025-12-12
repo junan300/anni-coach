@@ -68,3 +68,6 @@
 - [x] Update LinkedIn link to https://www.linkedin.com/in/ana-f-aguilar-varon-1a45a223/?locale=en_US
 - [x] Update email to anniaguilarcoach@gmail.com
 - [x] Remove contact form from Contact page
+
+## LinkedIn URL Update
+- [x] Change LinkedIn URL to www.linkedin.com/in/anniaguilar

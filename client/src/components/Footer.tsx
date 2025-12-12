@@ -42,7 +42,7 @@ export default function Footer({ lang }: FooterProps) {
               <a href="https://www.facebook.com/anniaguilarcoach" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="https://www.linkedin.com/in/ana-f-aguilar-varon-1a45a223/?locale=en_US" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/anniaguilar" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
