@@ -36,13 +36,13 @@ export default function Footer({ lang }: FooterProps) {
               {t.about}
             </p>
             <div className="flex gap-4 pt-2">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/anniaguilarcoach/#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.facebook.com/anniaguilarcoach" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/ana-f-aguilar-varon-1a45a223/?locale=en_US" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
@@ -99,8 +99,8 @@ export default function Footer({ lang }: FooterProps) {
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <a href="mailto:contact@anniaguilar.com" className="hover:text-primary transition-colors">
-                  contact@anniaguilar.com
+                <a href="mailto:anniaguilarcoach@gmail.com" className="hover:text-primary transition-colors">
+                  anniaguilarcoach@gmail.com
                 </a>
               </li>
             </ul>

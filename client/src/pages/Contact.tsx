@@ -1,27 +1,7 @@
 import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast.success("Message sent successfully! / ¡Mensaje enviado con éxito!");
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
-  };
-
   return (
     <Layout>
       {(lang) => (
@@ -40,17 +20,17 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="container mt-16 grid lg:grid-cols-2 gap-16">
+          <div className="container mt-16">
             {/* Contact Info */}
-            <div className="space-y-12">
+            <div className="space-y-12 max-w-4xl mx-auto">
               <div className="space-y-6">
                 <h2 className="text-3xl font-heading font-bold">
                   {lang === "en" ? "Contact Information" : "Información de Contacto"}
                 </h2>
                 <p className="text-muted-foreground text-lg">
                   {lang === "en"
-                    ? "Feel free to reach out via phone, email, or the contact form. I offer both in-person sessions in Hoover, AL and online sessions worldwide."
-                    : "Siéntete libre de contactarme por teléfono, correo o el formulario. Ofrezco sesiones presenciales en Hoover, AL y sesiones en línea a nivel mundial."}
+                    ? "Feel free to reach out via phone or email. I offer both in-person sessions in Hoover, AL and online sessions worldwide."
+                    : "Siéntete libre de contactarme por teléfono o correo. Ofrezco sesiones presenciales en Hoover, AL y sesiones en línea a nivel mundial."}
                 </p>
               </div>
 
@@ -73,8 +53,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">{lang === "en" ? "Email" : "Correo Electrónico"}</h3>
-                    <a href="mailto:contact@anniaguilar.com" className="text-muted-foreground hover:text-primary transition-colors text-lg">
-                      contact@anniaguilar.com
+                    <a href="mailto:anniaguilarcoach@gmail.com" className="text-muted-foreground hover:text-primary transition-colors text-lg">
+                      anniaguilarcoach@gmail.com
                     </a>
                   </div>
                 </div>
@@ -94,47 +74,6 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="bg-card p-8 md:p-10 rounded-[2rem] border border-border/50 shadow-lg">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">{lang === "en" ? "Full Name" : "Nombre Completo"}</Label>
-                  <Input id="name" required placeholder="John Doe" className="h-12 rounded-xl" />
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">{lang === "en" ? "Email" : "Correo"}</Label>
-                    <Input id="email" type="email" required placeholder="john@example.com" className="h-12 rounded-xl" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">{lang === "en" ? "Phone (Optional)" : "Teléfono (Opcional)"}</Label>
-                    <Input id="phone" type="tel" placeholder="(555) 123-4567" className="h-12 rounded-xl" />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">{lang === "en" ? "Message" : "Mensaje"}</Label>
-                  <Textarea 
-                    id="message" 
-                    required 
-                    placeholder={lang === "en" ? "How can I help you?" : "¿Cómo puedo ayudarte?"}
-                    className="min-h-[150px] rounded-xl resize-none" 
-                  />
-                </div>
-
-                <Button type="submit" size="lg" className="w-full h-12 rounded-xl text-lg" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <span className="animate-pulse">...</span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      {lang === "en" ? "Send Message" : "Enviar Mensaje"} <Send className="h-4 w-4" />
-                    </span>
-                  )}
-                </Button>
-              </form>
             </div>
           </div>
         </div>

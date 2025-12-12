@@ -61,3 +61,10 @@
 - [ ] Create /admin/courses/[id]/edit page (edit existing course - skipped for now)
 - [x] Update App.tsx with new routes
 - [x] Add Courses link to Navbar
+
+## Contact Information Updates
+- [x] Update Instagram link to https://www.instagram.com/anniaguilarcoach/#
+- [x] Update Facebook link to https://www.facebook.com/anniaguilarcoach
+- [x] Update LinkedIn link to https://www.linkedin.com/in/ana-f-aguilar-varon-1a45a223/?locale=en_US
+- [x] Update email to anniaguilarcoach@gmail.com
+- [x] Remove contact form from Contact page
