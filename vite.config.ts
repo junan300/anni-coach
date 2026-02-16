@@ -8,6 +8,8 @@ const plugins = [react(), tailwindcss(), jsxLocPlugin()];
 
 export default defineConfig({
   plugins,
+  // GitHub Pages project site: https://junan300.github.io/anni-coach/
+  base: process.env.GITHUB_PAGES === "true" ? "/anni-coach/" : "/",
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
